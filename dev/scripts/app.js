@@ -26,7 +26,38 @@ class App extends React.Component {
 				units: "metric"
 			}
 		}).then((res) => {
-			console.log(res);
+			const weatherArray = res.list;
+			console.log(weatherArray);
+			const pressArray = weatherArray.map(function(i){
+				return i.main.pressure;
+			});
+			let totalPress = 0;
+			for(let i = 0; i < pressArray.length; i++){
+				totalPress += pressArray[i];
+			}
+			const tempArray = weatherArray.map(function(i){
+				return i.main.temp_max;
+			});
+			const avgPress = (Math.round(totalPress / pressArray.length)) / 10;
+			console.log(avgPress);
+			const tempOne = Math.round(Math.max(...(tempArray.slice(0, 8))));
+			const tempTwo = Math.round(Math.max(...(tempArray.slice(8, 16))));
+			const tempThree = Math.round(Math.max(...(tempArray.slice(16, 24))));
+			const tempFour = Math.round(Math.max(...(tempArray.slice(24, 32))));
+			const tempFive = Math.round(Math.max(...(tempArray.slice(32, 40))));
+			console.log(tempOne, tempTwo, tempThree, tempFour, tempFive);
+			const dateOne = (weatherArray[3].dt_txt).slice(0, 10);
+			const dateTwo = (weatherArray[11].dt_txt).slice(0, 10);;
+			const dateThree = (weatherArray[19].dt_txt).slice(0, 10);;
+			const dateFour = (weatherArray[27].dt_txt).slice(0, 10);;
+			const dateFive = (weatherArray[35].dt_txt).slice(0, 10);;
+			console.log(dateOne, dateTwo, dateThree, dateFour, dateFive);
+			const iconOne = weatherArray[3].weather[0].icon;
+			const iconTwo = weatherArray[11].weather[0].icon;
+			const iconThree = weatherArray[19].weather[0].icon;
+			const iconFour = weatherArray[27].weather[0].icon;
+			const iconFive = weatherArray[35].weather[0].icon;
+			console.log(iconOne, iconTwo, iconThree, iconFour, iconFive);
 		});
 	};
 	changeCity(e){
