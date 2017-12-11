@@ -451,54 +451,68 @@ class App extends React.Component {
 	};
 	render(){
 		return(
-			<div>
+			<div className="body">
 				<Header />
-				<main className="wrapper">
-					<form onSubmit={this.getWeather}>
-						<input 
-							placeholder={"City"} 
-							type="text"
-							value={this.state.city}
-							onChange={this.changeCity}
-						/>
-					</form>
-					{this.state.location ?
-					<div className="forecast">
-						<div className="dayOne">
-							<h3>{this.state.dateOne}</h3>
-							<i className={"wi " + this.state.iconOne}></i>
-							<h2>{this.state.tempOne}&deg;C</h2>
-							<h4>{this.state.descOne}</h4>
-						</div> 
-						<div className="dayTwo">
-							<h3>{this.state.dateTwo}</h3>
-							<i className={"wi " + this.state.iconTwo}></i>
-							<h2>{this.state.tempTwo}&deg;C</h2>
-							<h4>{this.state.descTwo}</h4>
+				<main>
+					<div className="wrapper">
+						<form onSubmit={this.getWeather}>
+							<input 
+								placeholder={"City"} 
+								type="text"
+								value={this.state.city}
+								onChange={this.changeCity}
+							/>
+						</form>
+						{this.state.location ?
+						<div className="forecast">
+							<div className="fiveDay">
+								<div className="day">
+									<h3>{this.state.dateOne}</h3>
+									<div className="icon">
+										<i className={"wi " + this.state.iconOne}></i>
+									</div>
+									<h2>{this.state.tempOne}&deg;C</h2>
+									<h4>{this.state.descOne}</h4>
+								</div> 
+								<div className="day">
+									<h3>{this.state.dateTwo}</h3>
+									<div className="icon">
+										<i className={"wi " + this.state.iconTwo}></i>
+									</div>
+									<h2>{this.state.tempTwo}&deg;C</h2>
+									<h4>{this.state.descTwo}</h4>
+								</div>
+								<div className="day">
+									<h3>{this.state.dateThree}</h3>
+									<div className="icon">
+										<i className={"wi " + this.state.iconThree}></i>
+									</div>
+									<h2>{this.state.tempThree}&deg;C</h2>
+									<h4>{this.state.descThree}</h4>
+								</div>
+								<div className="day">
+									<h3>{this.state.dateFour}</h3>
+									<div className="icon">
+										<i className={"wi " + this.state.iconFour}></i>
+									</div>
+									<h2>{this.state.tempFour}&deg;C</h2>
+									<h4>{this.state.descFour}</h4>
+								</div>
+								<div className="day">
+									<h3>{this.state.dateFive}</h3>
+									<div className="icon">
+										<i className={"wi " + this.state.iconFive}></i>
+									</div>
+									<h2>{this.state.tempFive}&deg;C</h2>
+									<h4>{this.state.descFive}</h4>
+								</div>
+							</div>
+							<h5>Average pressure is {this.state.avgPress} kPa</h5>
 						</div>
-						<div className="dayThree">
-							<h3>{this.state.dateThree}</h3>
-							<i className={"wi " + this.state.iconThree}></i>
-							<h2>{this.state.tempThree}&deg;C</h2>
-							<h4>{this.state.descThree}</h4>
-						</div>
-						<div className="dayFour">
-							<h3>{this.state.dateFour}</h3>
-							<i className={"wi " + this.state.iconFour}></i>
-							<h2>{this.state.tempFour}&deg;C</h2>
-							<h4>{this.state.descFour}</h4>
-						</div>
-						<div className="dayFive">
-							<h3>{this.state.dateFive}</h3>
-							<i className={"wi " + this.state.iconFive}></i>
-							<h2>{this.state.tempFive}&deg;C</h2>
-							<h4>{this.state.descFive}</h4>
-						</div>
-						<h5>Average pressure is {this.state.avgPress} kPa</h5>
+						:
+						null
+						}
 					</div>
-					:
-					null
-					}
 				</main>
 				<Footer />
 			</div>
